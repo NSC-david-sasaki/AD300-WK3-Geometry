@@ -15,5 +15,7 @@ public class Main {
             System.out.println();
         }
 
+        buffer[0].setArea(-1.0);
+
     }
 }

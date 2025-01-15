@@ -28,14 +28,10 @@ abstract class Shape {
     }
 
     public void setArea(double area){
-        try {
-            if ((!Double.isNaN(area))&& (area>0) && (area<Double.MAX_VALUE)){
-                this.area = area;
-            }
+        if ((!Double.isNaN(area))&& (area>0) && (area<Double.MAX_VALUE)){
+            this.area = area;
         }
-        catch (IllegalArgumentException e){
-            System.out.println(e.getMessage());
-        }
+        else throw new IllegalArgumentException("Invalid area: " + area);
     }
 
     Shape(String name, double area){

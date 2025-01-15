@@ -4,7 +4,7 @@ package org.example;
 public class Circle extends Shape {
     private double radius;
     public Circle(String mCircle, double radius) {
-        super("circle", 0);
+        super("circle", 1.0);
         try {
             if ((!Double.isNaN(radius))&& (radius>0) && (radius<Double.MAX_VALUE)) {
                 this.radius = radius;
@@ -14,6 +14,11 @@ public class Circle extends Shape {
             System.out.println(e.getMessage());
         }
         this.setArea(this.calculateArea());
+    }
+
+    @Override
+    public void setArea(double area) {
+        super.setArea(area);
     }
 
     @Override
@@ -38,13 +43,18 @@ public class Circle extends Shape {
     }
 
     public void setRadius(double radius) {
-        try {
-            if ((!Double.isNaN(radius))&& (radius>0) && (radius<Double.MAX_VALUE)){
-                this.radius = radius;
-            }
+        if ((!Double.isNaN(radius))&& (radius>0) && (radius<Double.MAX_VALUE)){
+            this.radius = radius;
         }
-        catch (IllegalArgumentException e){
-            System.out.println(e.getMessage());
+        else {
+            if (Double.isNaN(radius)) {
+                System.out.println("The radius is NaN.");
+            } else if (radius <= 0) {
+                System.out.println("The radius is not positive: " + radius);
+            } else if (radius >= Double.MAX_VALUE) {
+                System.out.println("The radius is too large: " + radius);
+            }
+            throw new IllegalArgumentException("Invalid radius value: " + radius + ". Radius must be greater than 0 and not NaN.");
         }
     }
 }
