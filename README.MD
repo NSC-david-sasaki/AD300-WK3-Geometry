@@ -22,8 +22,8 @@ The circle constructor assume a radius of 1, but can be manually defined with `s
 
 ## Dependencies
 - docker for dev containers
-- gradle for build
-- junit for test cases
+- gradle 8.12 for build
+- junit 5.11.4 for test cases
 
 **Note**: dependencyUpdates gradle plugin is disabled \
  uncomment to check for updates using `./gradlew dependencyUpdates`
